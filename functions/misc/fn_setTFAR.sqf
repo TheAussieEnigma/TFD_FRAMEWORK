@@ -12,6 +12,7 @@ _settingsSwest = false call TFAR_fnc_generateSwSettings;
 _settingsSwest set [2, ["311","312","313","314","315","316","317","318"]];
 tf_freq_west = _settingsSWest;
 publicVariable "tf_freq_west";
+
 //Set LR frequencies for West
 _settingsLRwest = false call TFAR_fnc_generateLRSettings;
 _settingsLRwest set [2, ["50","51","52","53","54","55","56","57","58"]]; 
