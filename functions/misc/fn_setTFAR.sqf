@@ -4,6 +4,9 @@ publicVariable "TF_give_personal_radio_to_regular_soldier";
 tf_same_sw_frequencies_for_side = true;
 publicVariable "tf_same_sw_frequencies_for_side";
 
+tf_same_lr_frequencies_for_side = true;
+publicVariable "tf_same_sw_frequencies_for_side";
+
 //Set SW frequencies for West
 _settingsSwest = false call TFAR_fnc_generateSwSettings;
 _settingsSwest set [2, ["311","312","313","314","315","316","317","318"]];
