@@ -1,3 +1,6 @@
+//ST Test
+
+//ST Test 2
 execVM "scripts\markerInit.sqf";
 ////////////////////////////////////////////////// DO NOT EDIT BELOW THIS LINE //////////////////////////////////////////////////
 // Get mission parameter to see if HeadlessClient is present and assign its name
