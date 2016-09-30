@@ -8,5 +8,3 @@ params = 	the player,
 			enable 3PP camera
 */
 ["Initialize", [player,[],true,false,true]] call BIS_fnc_EGSpectator;
-
-I would walk 1000000 miles
