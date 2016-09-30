@@ -1,0 +1,50 @@
+//Advanced Flight Model - 0 = Player choice, 1 = Force on, 2 = Force off
+forceRotorLibSimulation = 0;
+
+//Disables various in game chat channels, useful for removing ability to place map markers.
+//0 = Global
+//1 = Side
+//2 = Command
+//3 = Group
+//4 = Vehicle
+//5 = Direct
+//6 = System - this removes player joining messages/kills etc
+disablechannels[]={0,6};
+
+
+
+//============================================================//
+//The below does not need to be adjusted.
+
+// A player will not be placed in a slot when they join
+joinUnassigned = 1; 
+
+// No playable units will spawn as AI
+disabledAI = 1; 
+
+// Debug for admins/hosts
+enableDebugConsole = 1; 
+
+respawn = 3;
+respawndelay = 999999999;
+
+// User Functions
+class CfgFunctions
+{
+	#include "functions\TFD.hpp"
+};
+
+// Admin Panel Defines
+#include "adminpanelmk2\dialogs.hpp"
+
+// Headless client setting - please do not adjust this.
+class Params
+{
+	class HeadlessClient
+	{
+		title = "Headless Client";
+		values[]= {0,1};
+		texts[] = {"OFF","ON"};
+		default = 0;
+	};
+};

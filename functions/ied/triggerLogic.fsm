@@ -1,0 +1,276 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, triggerLogic">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init_",0,250,-830.989441,-214.782578,-740.990051,-164.782593,0.000000,"Init" \n ""};
+item1[] = {"ied_is_alive_",4,218,-408.174744,-214.868851,-318.174744,-164.868866,0.000000,"" \n "ied is alive" \n ""};
+item2[] = {"evaluate_state_",2,250,-16.085327,-214.794067,73.914688,-164.794067,0.000000,"" \n "evaluate state" \n ""};
+item3[] = {"moving_too_fast",4,218,162.772095,-31.034729,252.772095,18.965271,0.000000,"" \n "moving too fast" \n ""};
+item4[] = {"IED_is_tripped_",1,250,304.852386,-30.014832,394.852417,19.985153,0.000000,"" \n "IED is tripped" \n ""};
+item5[] = {"ied_is_armed_",4,218,-14.743996,-129.498932,75.256012,-79.498932,0.000000,"" \n "ied is armed" \n ""};
+item6[] = {"players_velocity",2,250,-15.110924,-30.998154,74.889114,19.001846,0.000000,"" \n "players velocity" \n ""};
+item7[] = {"moving_slow_",4,218,-145.381134,-30.919388,-55.381165,19.080612,0.000000,"" \n "moving slow" \n ""};
+item8[] = {"ied_disarmed_",4,218,154.325256,-215.813431,244.325256,-165.813431,0.000000,"" \n "ied disarmed" \n ""};
+item9[] = {"players_distance",2,250,-279.909637,-215.422165,-189.909607,-165.422165,0.000000,"" \n "players distance " \n "from ied"};
+item10[] = {"inside_radius_",4,218,-162.332657,-215.102798,-72.332672,-165.102798,0.000000,"" \n "inside radius" \n ""};
+item11[] = {"outside_radius_",4,218,-280.082306,-302.088196,-190.082306,-252.088196,0.000000,"" \n "outside radius" \n ""};
+item12[] = {"remove_player__from",2,250,-279.206848,-385.408203,-189.206848,-335.408234,0.000000,"" \n "remove player " \n "from target list"};
+item13[] = {"init_state_",2,250,-556.590088,-214.160248,-466.590027,-164.160248,0.000000,"" \n "init state" \n ""};
+item14[] = {"ied_is_dead_",4,218,-555.937378,-385.737610,-465.937256,-335.737610,0.000000,"" \n "ied is dead" \n ""};
+item15[] = {"",7,210,-515.487122,-9.821167,-507.486969,-1.821167,0.000000,""};
+item16[] = {"_",8,218,-683.775269,-214.455734,-593.775269,-164.455795,0.000000,""};
+item17[] = {"exit_No_Result_",1,4346,154.284973,-386.052673,244.285004,-336.052673,0.000000,"" \n "exit No Result" \n ""};
+item18[] = {"_",8,218,-20.442566,-385.605774,69.557434,-335.605774,0.000000,""};
+link0[] = {0,16};
+link1[] = {1,9};
+link2[] = {2,5};
+link3[] = {2,8};
+link4[] = {3,4};
+link5[] = {5,6};
+link6[] = {6,3};
+link7[] = {6,7};
+link8[] = {7,15};
+link9[] = {8,17};
+link10[] = {9,10};
+link11[] = {9,11};
+link12[] = {10,2};
+link13[] = {11,12};
+link14[] = {12,18};
+link15[] = {13,1};
+link16[] = {13,14};
+link17[] = {14,12};
+link18[] = {15,13};
+link19[] = {16,13};
+link20[] = {18,17};
+globals[] = {0.000000,0,0,0,0,640,480,1,28,6316128,1,-766.454346,535.494812,161.687592,-581.381958,1032,589,1};
+window[] = {0,-1,-1,-1,-1,810,50,1490,50,1,1050};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "triggerLogic";
+        class States
+        {
+                /*%FSM<STATE "Init_">*/
+                class Init_
+                {
+                        name = "Init_";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"_obj = _this select 0;" \n
+                         "_activationRadius = 15;" \n
+                         "" \n
+                         "systemChat ""FSM Started"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="init_state_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "evaluate_state_">*/
+                class evaluate_state_
+                {
+                        name = "evaluate_state_";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"_armed = _obj getVariable [""ied_armed"",false]" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "ied_disarmed_">*/
+                                class ied_disarmed_
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="exit_No_Result_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_armed)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "ied_is_armed_">*/
+                                class ied_is_armed_
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="players_velocity";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_armed"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "IED_is_tripped_">*/
+                class IED_is_tripped_
+                {
+                        name = "IED_is_tripped_";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"_obj setVariable [""ied_ready"", false, true];" \n
+                         "" \n
+                         "systemChat ""FSM terminates - DETONATION"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "players_velocity">*/
+                class players_velocity
+                {
+                        name = "players_velocity";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_velocityPlayer = velocityModelSpace player;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "moving_slow_">*/
+                                class moving_slow_
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="init_state_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_velocityPlayer select 0 < 2) && (_velocityPlayer select 1 < 2)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "moving_too_fast">*/
+                                class moving_too_fast
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="IED_is_tripped_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_velocityPlayer select 0 > 1.5) || (_velocityPlayer select 1 > 1.5)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "players_distance">*/
+                class players_distance
+                {
+                        name = "players_distance";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"_distanceFromIed = _obj distance player;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "outside_radius_">*/
+                                class outside_radius_
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="remove_player__from";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_distanceFromIED >= _activationRadius)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "inside_radius_">*/
+                                class inside_radius_
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="evaluate_state_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_distanceFromIED <= _activationRadius)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "remove_player__from">*/
+                class remove_player__from
+                {
+                        name = "remove_player__from";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"_list = _obj getVariable [""current_targets"",[player]];" \n
+                         "" \n
+                         "_list = _list - [player];" \n
+                         "" \n
+                         "_obj setVariable [""current_targets"", _list, true]; "/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="exit_No_Result_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "init_state_">*/
+                class init_state_
+                {
+                        name = "init_state_";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "ied_is_dead_">*/
+                                class ied_is_dead_
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="remove_player__from";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive _obj) || (isNull _obj)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "ied_is_alive_">*/
+                                class ied_is_alive_
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="players_distance";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(alive _obj) && !(isNull _obj)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "exit_No_Result_">*/
+                class exit_No_Result_
+                {
+                        name = "exit_No_Result_";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/"systemChat ""FSM terminates - NO RESULT"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init_";
+        finalStates[] =
+        {
+                "IED_is_tripped_",
+                "exit_No_Result_",
+        };
+};
+/*%FSM</COMPILE>*/
