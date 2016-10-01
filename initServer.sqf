@@ -1,5 +1,3 @@
-#include "missionSettings.hpp"
-
 TFD_ADMINS = [
 	"76561198007514110",	//Atreus
 	"76561197974803128",  	//Mortified

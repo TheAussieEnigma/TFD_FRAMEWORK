@@ -1,8 +1,7 @@
-//ST Test
-
-//ST Test 2
-execVM "scripts\markerInit.sqf";
 ////////////////////////////////////////////////// DO NOT EDIT BELOW THIS LINE //////////////////////////////////////////////////
+
+if (isNil "paramsArray") then { paramsArray=[0,0,0] };
+
 // Get mission parameter to see if HeadlessClient is present and assign its name
 if ("HeadlessClient" call BIS_fnc_getParamValue == 1) then {
 	

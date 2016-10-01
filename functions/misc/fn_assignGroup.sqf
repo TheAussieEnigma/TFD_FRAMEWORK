@@ -1,28 +1,36 @@
 /*
  * Author: JohnnyShootos
- * Modified: 16/08/2016
+ * Modified: 19/09/2016
  *
  * Sets group names based on the TFD_ORBAT array.
  *
  * Arguments:
- * 	NONE
+ * 	0: The variable containing the orbat for the mission <ARRAY>
  *
  * Return Value:
  * Nil
  *
  * Example:
- * [] spawn TFD_fnc_assignGroup;
+ * [myVar] spawn TFD_fnc_assignGroup;
  *
  * Public: No
  *
  */
 
-_p = str player;
+
+private _TFD_ORBAT = param [0, [], [[]]];
+
 {
+	_n = str _x;
+	_p = _x;
+	
+	{
 		
-	if (_p in _x) then {
-		(group player) setGroupIdGlobal [(_x select 0)];
-	};
+		if (_n in _x) then {
+		
+			(group _p) setGroupIdGlobal [(_x select 0)];
+		};
 
-} forEach TFD_ORBAT;
+	} forEach _TFD_ORBAT;
 
+} forEach playableUnits;

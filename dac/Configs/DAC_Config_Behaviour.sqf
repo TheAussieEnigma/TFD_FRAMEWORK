@@ -18,8 +18,8 @@ switch (_this select 0) do
 //-------------------------------------------------------------------------------------------------------------------------
 	case 0:
 	{
-		//_setSkill = ["aimingAccuracy","aimingShake","aimingSpeed","Endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"];
-		_setSkill   = [[0.2,0.2],[0.7,0.9],[0.2,0.3],[0.2,0.5],[0.2,0.8],[0.2,1.0],[0.2,0.8],[0.2,0.8],[0.6,0.8],[0.2,0.8]];
+		//_setSkill = ["aimingAccuracy",	"aimingShake",	"aimingSpeed",	"Endurance",	"spotDistance",	"spotTime",	"courage",	"reloadSpeed",	"commanding",	"general"];
+		_setSkill   = [[0.2,0.2],			[0.7,0.9],		[0.1,0.3],		[0.2,0.5],		[0.2,0.6],		[0.2,1.0],	[0.2,0.6],	[0.2,0.6],		[0.6,0.8],		[0.2,0.6]];
 		_setCombat  = ["green","white","yellow"];
 		_setBehav   = ["careless","safe","aware"];
 		_setSpeed   = ["limited","normal","full"];
@@ -27,7 +27,7 @@ switch (_this select 0) do
 		_setFleeing = [0,200];
 		_setHeliVal = [50,100,0.7,1];
 		_setPause   = [[5,10],[5,10],[5,10],[20,30,5,5],[1,3],[0,0]];
-		_setBldgBeh = [15,200,600,30,1];
+		_setBldgBeh = [15,400,600,120,1];
 		_setPatrol  = ["45 + (20 * (skill _leader))","(60 + (random 60)) + ((skill _leader) * 50)"];
 		_setSearch  = ["40 + ((skill _leader) * 150)","50 + ((skill _leader) * 50)"];
 		_setSupport = [1,0];

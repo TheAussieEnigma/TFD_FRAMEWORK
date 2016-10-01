@@ -6,7 +6,7 @@
 * 
 *
 * Arguments:
-*	NONE
+*	0: Input variable which is the array defining the orbat <ARRAY>
 *
 * Return Value:
 * Nil
@@ -16,12 +16,12 @@
 *
 */
 
-sleep 20;
+_TFD_ORBAT = param [0, [], [[]]];
 
 player createDiarySubject [ "roster" , "ORBAT & Signal" ];
 
 _glist = [];
-_gList = _glist + TFD_ORBAT;
+_gList = _glist + _TFD_ORBAT;
 reverse _gList;
 
 player createDiaryRecord [ "roster" ,

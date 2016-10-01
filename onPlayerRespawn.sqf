@@ -1,27 +1,28 @@
 #include "missionSettings.hpp"
 
-//Kit out the player
-if (scriptedPlayerKit) then {
-	_nul = [] execVM "scripts\playerKit.sqf";
-};
+//Close the spectator if the player respawned during the mission
+["Terminate"] call BIS_fnc_EGSpectator;
 
 //Weapon Saftey switch
 if !(startMission) then {
-	["SAFE", true] call TFD_fnc_weaponSafety;
-};
 
-//Close the spectator if the player respawned during the mission
-["Terminate"] call BIS_fnc_EGSpectator;
+	[ "SAFE" ] call TFD_fnc_weaponSafety;
+	
+	nul = [] execVM "scripts\briefingInProgress.sqf";
+	
+};
 
 //Execute Player Setup sqf
 _handle = [] execVM "scripts\playerSetup.sqf";
 waitUntil { scriptDone _handle };
 
 //Assign player to group
-[] call TFD_fnc_assignGroup;
+[ TFD_ORBAT ] call TFD_fnc_assignGroup;
 
 //Roster
-[] call TFD_fnc_unitRoster;
+[ TFD_ORBAT ] call TFD_fnc_unitRoster;
 
-
-
+//Kit out the player
+if (scriptedPlayerKit) then {
+	_nul = [] execVM "scripts\playerKit.sqf";
+};

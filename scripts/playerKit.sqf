@@ -1,56 +1,48 @@
 _type = typeOf player;
 
 // Clothing Selection
-	_uniform = "rhs_uniform_cu_ocp";
+	_uniform = "U_O_T_Soldier_F";
 	
-	_headgear = [ 
-		"rhsusf_ach_helmet_headset_ess_ocp" , 
-		"rhsusf_ach_bare_tan" , 
-		"rhsusf_ach_bare_tan_headset" , 
-		"rhsusf_ach_bare_tan_ess" , 
-		"rhsusf_ach_bare_tan_headset_ess" , 
-		"rhsusf_ach_helmet_ocp" , 
-		"rhsusf_ach_helmet_ESS_ocp" , 
-		"rhsusf_ach_helmet_headset_ocp" ,
-		"rhsusf_ach_helmet_headset_ess_ocp" 
-	] call BIS_fnc_selectRandom;
+	_headgear = "H_HelmetSpecO_ghex_F";
 	
-	_vest = [ 
-		"rhsusf_iotv_ocp_Repair" ,
-		"rhsusf_iotv_ocp_Rifleman" , 
-		"rhsusf_iotv_ocp_Squadleader" , 
-		"rhsusf_iotv_ocp_Teamleader" 
-	] call BIS_fnc_selectRandom;
+	_vest = "V_Chestrig_khk";
 	
-	_bagS = "rhsusf_assault_eagleaiii_ocp";
-	_bagL = "B_Kitbag_cbr";
+	_bagS = [ "B_ViperHarness_khk_F" , "B_ViperLightHarness_khk_F" ] call BIS_fnc_selectRandom;
+	_bagL = [ "B_ViperHarness_khk_F" , "B_ViperLightHarness_khk_F" ] call BIS_fnc_selectRandom;
+	_LRRadio = "tf_bussole";
 
 // Weapons
-	_rifle = "rhs_weap_m4a1_carryhandle";
-	_rifleA = "rhs_mag_30Rnd_556x45_Mk318_Stanag";
-	_rifleB = "rhsusf_acc_grip2";
+	_rifle = "arifle_CTAR_ghex_F";
+	_rifleA = "30Rnd_580x42_Mag_F";
+	_rifleB = "";
 	
-	_rifleVar = "rhs_weap_m16a4_carryhandle";
+	_rifleVar = "srifle_DMR_07_ghex_F";
+	_rifleVarA = "20Rnd_650x39_Cased_Mag_F";
 	
-	_rifleGL = "rhs_weap_m4a1_carryhandle_m203S";
+	_rifleSL = "arifle_ARX_ghex_F";
+	_rifleSLA = "30Rnd_65x39_caseless_green";
+	_rifleSLUA = "10Rnd_50BW_Mag_F";
+	
+	_rifleGL = "arifle_CTAR_GL_ghex_F";
 	_uglA = "1Rnd_HE_Grenade_shell";
 	
-	_lmg = "rhs_weap_m249_pip_S_para";
-	_lmgA = "rhs_200rnd_556x45_M_SAW";
+	_lmg = "arifle_CTARS_ghex_F";
+	_lmgA = "100Rnd_580x42_Mag_F";
 	_lmgB = "";
 	
-	_mmg = "rhs_weap_m240B";
-	_mmgA = "rhsusf_100Rnd_762x51";
-	_mmgB = "bipod_02_F_blk";
+	_mmg = "MMG_01_tan_F";
+	_mmgA = "150Rnd_93x64_Mag";
+	_mmgB = "bipod_02_F_tan";
 	
-	_sRail = "acc_flashlight";
-	_tRail = "";
+	_sRail = "";
+	_tRail = "rhs_acc_rakursPM";
 	
-	_sidearm = "rhsusf_weap_m9";
-	_sidearmA = "rhsusf_mag_15Rnd_9x19_JHP";
+	_side = "hgun_Rook40_F";
+	_sideA = "16Rnd_9x21_Mag";
+	_sideAtt = "muzzle_snds_L";
 	
-	_mat = "rhs_weap_smaw";
-	_matA = "rhs_mag_smaw_HEDP";
+	_mat = "";
+	_matA = "";
 
 	_glasses = goggles player;
 	
@@ -90,31 +82,57 @@ _assignedItems = [ "ItemMap" , "ItemCompass" , "ItemWatch" , "ItemRadio" ];
 
 [player] call ace_hearing_fnc_putInEarplugs;
 
+player addGoggles _glasses;
+
 switch (_type) do {
 
-	case "B_officer_F":
+	case "O_officer_F":
 		{
 			
-			for "_i" from 1 to 10 do { player addItemToVest _rifleA; };
+			player addBackpack _LRRadio;
+		
+			for "_i" from 1 to 13 do { player addItemToVest _rifleSLA; };
+			for "_i" from 1 to 3 do { player addItemToBackpack _rifleSLUA; };
+			player addItemToBackpack "SmokeShellPurple";
 			
-			player addWeapon _rifle;
+			player addWeapon _rifleSL;
 			player addPrimaryWeaponItem _rifleB;
 			player addPrimaryWeaponItem _sRail;
 			player addPrimaryWeaponItem _tRail;
 			
 			player addWeapon "Binocular";
 			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side;
+			player addHandgunItem _sideAtt;
 			
-			player addBackpack _bagS;
-		
 		};
-	case "B_Soldier_SL_F":
+	case "O_Soldier_SL_F":
 		{
 			
-			for "_i" from 1 to 9 do { player addItemToVest _rifleA; };
-			for "_i" from 1 to 8 do { player addItemToVest _uglA; };
+			player addBackpack _LRRadio;
+			
+			for "_i" from 1 to 13 do { player addItemToVest _rifleSLA; };
+			for "_i" from 1 to 3 do { player addItemToBackpack _rifleSLUA; };
+			player addItemToBackpack "SmokeShellPurple";
+			
+			player addWeapon _rifleSL;
+			player addPrimaryWeaponItem _rifleB;
+			player addPrimaryWeaponItem _sRail;
+			player addPrimaryWeaponItem _tRail;
+			
+			player addWeapon "Binocular";
+			
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
+			
+		};
+	case "O_Soldier_TL_F":
+		{
+			
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
+			for "_i" from 1 to 10 do { player addItemToVest _uglA; };
 			
 			player addWeapon _rifleGL;
 			player addPrimaryWeaponItem _sRail;
@@ -122,34 +140,17 @@ switch (_type) do {
 			
 			player addWeapon "Binocular";
 			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
 			
 			player addBackpack _bagS;
 			
 		};
-	case "B_Soldier_TL_F":
+	case "O_Soldier_AR_F":
 		{
 			
-			for "_i" from 1 to 9 do { player addItemToVest _rifleA; };
-			for "_i" from 1 to 8 do { player addItemToVest _uglA; };
-			
-			player addWeapon _rifleGL;
-			player addPrimaryWeaponItem _sRail;
-			player addPrimaryWeaponItem _tRail;
-			
-			player addWeapon "Binocular";
-			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
-			
-			player addBackpack _bagS;
-			
-		};
-	case "B_soldier_AR_F":
-		{
-			
-			for "_i" from 1 to 3 do { player addItemToVest _lmgA; };
+			for "_i" from 1 to 5 do { player addItemToVest _lmgA; };
 			
 			player addWeapon _lmg;
 			player addPrimaryWeaponItem _lmgB;
@@ -161,29 +162,30 @@ switch (_type) do {
 			player addBackpack _bagS;
 			
 		};
-	case "B_soldier_AAR_F":
+	case "O_Soldier_AAR_F":
 		{
 			
-			for "_i" from 1 to 8 do { player addItemToVest _rifleA; };
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
 			
 			player addWeapon _rifle;
 			player addPrimaryWeaponItem _sRail;
 			player addPrimaryWeaponItem _tRail;
 			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
 			
 			player addWeapon "Binocular";
 			
 			player addBackpack _bagS;
-			for "_i" from 1 to 5 do { player addItemToBackpack _lmgA; };
+			for "_i" from 1 to 6 do { player addItemToBackpack _lmgA; };
 			
 			
 		};
-	case "B_HeavyGunner_F":
+	case "O_HeavyGunner_F":
 		{
 			
-			for "_i" from 1 to 4 do { player addItemToVest _mmgA; };
+			for "_i" from 1 to 5 do { player addItemToVest _mmgA; };
 			
 			player addWeapon _mmg;
 			player addPrimaryWeaponItem _mmgB;
@@ -191,41 +193,43 @@ switch (_type) do {
 			
 			player addItemToVest _mmgA;
 			
-			player addBackpack _bagS;
+			player addBackpack _LRRadio;
 			
 		};
-	case "B_support_AMG_F":
+	case "O_support_AMG_F":
 		{
 			
-			for "_i" from 1 to 8 do { player addItemToVest _rifleA; };
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
 			
 			player addWeapon _rifle;
 			player addPrimaryWeaponItem _sRail;
 			player addPrimaryWeaponItem _tRail;
 			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
 			
 			player addWeapon "Binocular";
 			
 			player addBackpack _bagS;
-			for "_i" from 1 to 3 do { player addItemToBackpack _mmgA; };
+			for "_i" from 1 to 4 do { player addItemToBackpack _mmgA; };
 			
 			
 			
 		};
-	case "B_medic_F":
+	case "O_medic_F":
 		{
 				
-			for "_i" from 1 to 8 do { player addItemToVest _rifleA; };
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
 			
 			player addWeapon _rifle;
 			player addPrimaryWeaponItem _rifleB;
 			player addPrimaryWeaponItem _sRail;
 			player addPrimaryWeaponItem _tRail;
 			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
 			
 			player addBackpack _bagS;	
 			for "_i" from 1 to 40 do {player addItemToBackpack "ACE_fieldDressing";};
@@ -236,15 +240,16 @@ switch (_type) do {
 	case "B_Soldier_A_F":
 		{
 				
-			for "_i" from 1 to 10 do { player addItemToVest _rifleA; };
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
 			
 			player addWeapon _rifle;
 			player addPrimaryWeaponItem _rifleB;
 			player addPrimaryWeaponItem _sRail;
 			player addPrimaryWeaponItem _tRail;
 			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
 			
 			player addBackpack _bagL;
 			for "_i" from 1 to 2 do {player addItemToBackpack _matA;};
@@ -252,8 +257,8 @@ switch (_type) do {
 		};
 	case "B_soldier_LAT_F":
 		{
-				
-			for "_i" from 1 to 8 do { player addItemToVest _rifleA; };
+
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
 			
 			player addBackpack _bagS;
 			player addItemToBackpack _matA;
@@ -263,50 +268,83 @@ switch (_type) do {
 			player addPrimaryWeaponItem _sRail;
 			player addPrimaryWeaponItem _tRail;
 			player addWeapon _mat;
-			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
-			
+
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
+
 			player addBackpack _bagL;
-			
+
 			player addItemToBackpack _matA;
-		
+
 		};
-	case "B_Soldier_F":
+	case "O_soldier_exp_F":
 		{
 			
-			for "_i" from 1 to 10 do { player addItemToVest _rifleA; };
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
 			
-			player addWeapon _rifleVar;
-			player addPrimaryWeaponItem _sRail;
-			player addPrimaryWeaponItem _tRail;
-			player addPrimaryWeaponItem _rifleB;
-			
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
-			player addWeapon _sidearm;
-			
-			player addBackpack _bagL;
-			player addItemToBackpack "ACE_Clacker";
-			player addItemToBackpack "SatchelCharge_Remote_Mag";
-		};
-	default
-		{
-			
-			for "_i" from 1 to 14 do { player addItemToVest _rifleA; };
 			player addWeapon _rifle;
 			player addPrimaryWeaponItem _sRail;
 			player addPrimaryWeaponItem _tRail;
 			player addPrimaryWeaponItem _rifleB;
 			
-			player addWeapon _sidearm;
-			for "_i" from 1 to 2 do { player addItemToVest _sidearmA; };
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
+			
+			player addBackpack _bagL;
+			player addItemToBackpack "ACE_Clacker";
+			player addItemToBackpack "ACE_DefusalKit";
+			for "_i" from 1 to 2 do { player addItemToBackpack "SatchelCharge_Remote_Mag"; };
+		};
+	case "O_support_Mort_F":
+		{
+			
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
+			
+			player addWeapon _rifle;
+			player addPrimaryWeaponItem _sRail;
+			player addPrimaryWeaponItem _tRail;
+			player addPrimaryWeaponItem _rifleB;
+			
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
+			
+			player addBackpack "O_Mortar_01_weapon_F";
+		};
+	case "O_support_AMort_F":
+		{
+			
+			for "_i" from 1 to 12 do { player addItemToVest _rifleA; };
+			
+			player addWeapon _rifle;
+			player addPrimaryWeaponItem _sRail;
+			player addPrimaryWeaponItem _tRail;
+			player addPrimaryWeaponItem _rifleB;
+			
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
+			
+			player addBackpack "O_Mortar_01_support_F";
+		};
+	default
+		{
+			
+			for "_i" from 1 to 12 do { player addItemToVest _rifleVarA; };
+			player addWeapon _rifleVar;
+			player addPrimaryWeaponItem _sRail;
+			player addPrimaryWeaponItem _tRail;
+			player addPrimaryWeaponItem _rifleB;
+			
+			player addWeapon _side; 
+			player addHandgunItem _sideAtt;
+			for "_i" from 1 to 2 do { player addItemToVest _sideA; };
 			
 			player addBackpack _bagS;
 			for "_i" from 1 to 6 do {player addItemToBackpack _rifleA;};
+			for "_i" from 1 to 6 do {player addItemToBackpack _rifleVarA;};
 			
-			player addBackpack _bagS;
-		
 		};
 };
-
-player addGoggles _glasses;

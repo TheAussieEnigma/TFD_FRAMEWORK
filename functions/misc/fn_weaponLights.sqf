@@ -28,8 +28,10 @@ while { true } do {
 
 			if ( _accessory in primaryWeaponItems _x) then { _x enableGunLights "forceOn";} else {
 				
-				removeAllPrimaryWeaponItems _x; // <-- do we need to remove all their attachments? Leagacy thing from when people were taking ACO's from dead enemy TLs, 50/50 on still necessary or not // oh yeah... people were dicks.
-				_x addPrimaryWeaponItem _accessory; //this line replaces the light accessory if it currently occupied by a laser for example
+				removeAllPrimaryWeaponItems _x;
+				
+				_x addPrimaryWeaponItem _accessory; /
+				
 				_x enableGunLights "forceOn";
 			};
 			
