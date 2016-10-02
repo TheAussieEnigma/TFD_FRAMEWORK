@@ -30,7 +30,7 @@ while { true } do {
 				
 				removeAllPrimaryWeaponItems _x;
 				
-				_x addPrimaryWeaponItem _accessory; /
+				_x addPrimaryWeaponItem _accessory;
 				
 				_x enableGunLights "forceOn";
 			};
