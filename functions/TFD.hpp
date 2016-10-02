@@ -8,6 +8,7 @@ class TFD
 		class automaticMarkers {};
 		class planePos {};
 		class setTFAR {};
+		class setRadio {};
 		class unitRoster {};
 		class weaponLights {};
 		class weaponSafety {};

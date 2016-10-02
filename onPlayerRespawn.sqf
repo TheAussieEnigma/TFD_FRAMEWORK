@@ -16,13 +16,16 @@ if !(startMission) then {
 _handle = [] execVM "scripts\playerSetup.sqf";
 waitUntil { scriptDone _handle };
 
+//Kit out the player
+if (scriptedPlayerKit) then {
+	_nul = [] execVM "scripts\playerKit.sqf";
+};
+
 //Assign player to group
 [ TFD_ORBAT ] call TFD_fnc_assignGroup;
 
 //Roster
 [ TFD_ORBAT ] call TFD_fnc_unitRoster;
 
-//Kit out the player
-if (scriptedPlayerKit) then {
-	_nul = [] execVM "scripts\playerKit.sqf";
-};
+// Personal Radio
+[ TFD_ORBAT ] call TFD_fnc_setRadio;
