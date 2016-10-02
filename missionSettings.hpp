@@ -34,12 +34,3 @@ startMission = false;
 */
 
 scriptedPlayerKit = false;
-
-/*
-*
-* scriptedVehicleKit is used to check if you are using the "vehicleKit.sqf" script to set vehicle inventory's.
-* set to true if you are using the script.
-*
-*/
-
-scriptedVehicleKit = false;
