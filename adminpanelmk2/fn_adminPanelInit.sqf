@@ -1,4 +1,5 @@
 if (isNil "SERVER_IS_LOCKED") then {SERVER_IS_LOCKED = false; publicVariable "SERVER_IS_LOCKED"};
+
 ///Function Init for JohnnyShootos' Admin Panel
 JSH_ADMIN_GODMODE = {
 	_check = player getVariable ["jsh_adminGodMode", false];
@@ -238,7 +239,6 @@ JSH_ADMIN_REMOTEEXECUTE = {
 	[[],_compiledCodeString] remoteExec ["spawn", _machineNumber];
 };
 
-
 JSH_ADMIN_REFRESH = {
 	disableSerialization;
 	#define IDC_ADMINPANELMK2_JSH_GUI_ADMIN_LISTBOX	7020
@@ -264,7 +264,6 @@ JSH_ADMIN_REFRESH = {
 		_ctrl lbSetColor [_forEachIndex, [1, 1, 1, 1]];
 	} forEach JSH_ADMIN_PLAYERLIST_DATA;
 
-
 	lbSort _ctrl;
 	_ctrl lbSetCurSel 0;
 	ctrlSetFocus _ctrl;
@@ -279,7 +278,6 @@ JSH_ADMIN_UPDATEBUTTONS = {
 	#define IDC_ADMINPANELMK2_JSH_GUI_ADMIN_BUTTON_4		7124
 	#define IDC_ADMINPANELMK2_JSH_GUI_ADMIN_BUTTON_6		7126
 
-
 	_buttonVarArray = [
 		[IDC_ADMINPANELMK2_JSH_GUI_ADMIN_BUTTON_0, "jsh_adminGodMode"],
 		[IDC_ADMINPANELMK2_JSH_GUI_ADMIN_BUTTON_1, "jsh_adminTeleport"],
@@ -288,7 +286,6 @@ JSH_ADMIN_UPDATEBUTTONS = {
 		[IDC_ADMINPANELMK2_JSH_GUI_ADMIN_BUTTON_4, "jsh_adminSpectator"],
 		[IDC_ADMINPANELMK2_JSH_GUI_ADMIN_BUTTON_6, "jsh_adminZeus"]
 	];
-
 
 	{
 		_ctrl = (findDisplay 6969) displayCtrl (_x select 0);
@@ -317,16 +314,6 @@ JSH_ADMIN_GETPLAYERLIST = {
 	} forEach playableUnits;
 	
 	JSH_ADMIN_PLAYERLIST_DATA = _data; publicVariable "JSH_ADMIN_PLAYERLIST_DATA";
-};
-
-JSH_ADMIN_GETSERVERFPS = {
-	[[], 
-	{
-		while {true} do {
-			JSH_ADMIN_SERVERFPS_VALUE = diag_fps; publicVariable "JSH_ADMIN_SERVERFPS_VALUE";
-			sleep 2;
-		};
-	}] remoteExec ["spawn", 2];
 };
 
 JSH_ADMIN_TOOLTIP_REMOTEEXEC = {
@@ -382,4 +369,13 @@ JSH_ADMIN_SERVERFPS_COUNTER = {
 			} else {_ctrl ctrlSetTextColor [1,1,0,0.75]};
 		} else {_ctrl ctrlSetTextColor [1,0,0,0.75]};
 	};
+};
+
+//Server Init Only Stuff
+if (!isServer) exitWith {};
+
+//Update the server FPS Value across the network.
+while {true} do {
+	JSH_ADMIN_SERVERFPS_VALUE = diag_fps; publicVariable "JSH_ADMIN_SERVERFPS_VALUE";
+	uiSleep 5;
 };

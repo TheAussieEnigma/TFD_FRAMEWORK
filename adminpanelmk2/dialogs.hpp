@@ -37,7 +37,7 @@ class TFD_AdminPanel
 	movingEnable = false;
 	enableSimulation = 1;
 
-	onLoad = "[] remoteExecCall ['JSH_ADMIN_GETPLAYERLIST',2]; [] call JSH_ADMIN_GETSERVERFPS; [] spawn {sleep 0.05;[] call JSH_ADMIN_REFRESH}";
+	onLoad = "[] remoteExecCall ['JSH_ADMIN_GETPLAYERLIST',2]; [] spawn {sleep 0.1;[] call JSH_ADMIN_REFRESH}";
 	
 	class controls
 	{
