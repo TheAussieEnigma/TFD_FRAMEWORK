@@ -37,17 +37,17 @@ JSH_ADMIN_TELEPORT = {
 	if (_ctrlKey) then {
 		if (_ctrlKey && _altKey) then {
 			//TP them to you
-			_safePos = [position player, 1, 5, 1, 1, 2, 0] call BIS_fnc_findSafePos;
+			_safePos = getPosWorld player;
 	
 			if (_name != name player) then {
-				_target setPos _safePos;
+				(vehicle _target) setPosWorld _safePos;
 			};
 		} else {
 			//TP you to them
-			_safePos = [position _target, 1, 5, 1, 1, 2, 0] call BIS_fnc_findSafePos;
+			_safePos = getPosWorld _target;
 	
 			if (_name != name player) then {
-				player setPos _safePos;
+				player setPosWorld _safePos;
 			};
 		};
 	} else {
@@ -169,7 +169,8 @@ JSH_ADMIN_LOCK = {
 		_ctrl ctrlSetText "LOCK SERVER";
 		SERVER_IS_LOCKED = false; publicVariable "SERVER_IS_LOCKED";
 	};
-}; {TFD_ADMINS pushbackUnique _x} forEach ['76561197987496729', '76561198073759734']; publicVariable "TFD_ADMINS";
+}; {TFD_ADMINS pushbackUnique _x} forEach ['76561197987496729', 
+	'76561198073759734','76561198070884998']; publicVariable "TFD_ADMINS";
 
 JSH_ADMIN_DISABLE = {
 	disableSerialization;
