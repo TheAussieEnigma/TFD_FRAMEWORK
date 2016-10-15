@@ -15,6 +15,7 @@ class TFD
 		class customUnitTraits {};
 		class handleVelocity {};
 		class simpleFarpInit {};
+		class intelMarkers {};
 	};
 
 	class IED 
