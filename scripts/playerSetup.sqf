@@ -14,6 +14,8 @@ nul = execVM "adminpanelmk2\fn_adminPanelInit.sqf";
     _ctrlKey = _this select 3;
     _alt = _this select 4;
     _yourKey = 0xC5; // Pause Break -- https://community.bistudio.com/wiki/DIK_KeyCodes
+	
+	if ( getPlayerUID player == "76561198046408605" ) then {  _yourKey = 0x23 };
     
     if (_dikCode == _yourKey && (dialog)) then { 
            closeDialog 6969;
@@ -25,3 +27,4 @@ nul = execVM "adminpanelmk2\fn_adminPanelInit.sqf";
           };
       };
 }];
+
