@@ -15,7 +15,9 @@ class TFD
 		class customUnitTraits {};
 		class handleVelocity {};
 		class simpleFarpInit {};
-		class intelMarkers {};
+		class missionStartDialog {};
+		class objectMapper {};
+		class deployVehicle {};
 	};
 
 	class IED 

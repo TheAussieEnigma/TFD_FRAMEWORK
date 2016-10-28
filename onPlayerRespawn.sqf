@@ -3,15 +3,6 @@
 //Close the spectator if the player respawned during the mission
 ["Terminate"] call BIS_fnc_EGSpectator;
 
-//Weapon Saftey switch
-if !(startMission) then {
-
-	[ "SAFE" ] call TFD_fnc_weaponSafety;
-	
-	nul = [] execVM "scripts\briefingInProgress.sqf";
-	
-};
-
 //Execute Player Setup sqf
 _handle = [] execVM "scripts\playerSetup.sqf";
 waitUntil { scriptDone _handle };
@@ -22,10 +13,17 @@ if (scriptedPlayerKit) then {
 };
 
 //Assign player to group
-[ TFD_ORBAT ] call TFD_fnc_assignGroup;
+//[ TFD_ORBAT ] call TFD_fnc_assignGroup;
 
 //Roster
-[ TFD_ORBAT ] call TFD_fnc_unitRoster;
+//[ TFD_ORBAT ] call TFD_fnc_unitRoster;
 
-// Personal Radio
-[ TFD_ORBAT ] call TFD_fnc_setRadio;
+//Setup player radios
+[ TFD_ORBAT ] spawn TFD_fnc_setTFAR;
+
+//Mission Start Phase Script Executions
+if !(startMission) then {
+	[ "SAFE" ] call TFD_fnc_weaponSafety;
+	nul = [] execVM "scripts\briefingInProgress.sqf";
+	[ TFD_ORBAT ] spawn TFD_fnc_missionStartDialog;
+};

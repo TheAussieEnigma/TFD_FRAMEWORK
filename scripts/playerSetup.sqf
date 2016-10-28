@@ -28,3 +28,4 @@ nul = execVM "adminpanelmk2\fn_adminPanelInit.sqf";
       };
 }];
 
+player addAction ["START MISSION", {[[], {missionNameSpace setVariable ["startMission", true, true]}] remoteExec ["call", 0, true]}, [], -999, false, true, "", "!(missionNameSpace getVariable ['startMission', false])"];

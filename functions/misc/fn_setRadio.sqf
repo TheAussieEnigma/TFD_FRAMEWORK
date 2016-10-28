@@ -27,6 +27,7 @@ private _name = str player;
 
 		// Channels are 0 indexed so must be _channel - 1
 		[(call TFAR_fnc_activeSwRadio), _channel - 1] call TFAR_fnc_setSwChannel;
+		[(call TFAR_fnc_activeSwRadio), 7] call TFAR_fnc_setAdditionalSwChannel;
 
 	};
 }  forEach _TFD_ORBAT;

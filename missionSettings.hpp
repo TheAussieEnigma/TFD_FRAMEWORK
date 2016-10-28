@@ -8,13 +8,12 @@
 */
 
 TFD_ORBAT = [
-	["Command",	8,	"s_1","s_2"],
-	["Alpha",	1,	"s_3","s_4","s_5","s_6","s_7","s_8","s_9","s_10","s_11"],
-	["Bravo",	2,	"s_12","s_13","s_14","s_15","s_16","s_17","s_18","s_19","s_20"],
-	["Charlie",	3,	"s_21","s_22","s_23","s_24","s_25","s_26","s_27","s_28","s_29"],
-	["Delta",	4,	"s_30","s_31","s_32","s_33","s_34","s_35","s_36","s_37","s_38"],
-	["Echo",	5,	"s_39","s_40","s_41","s_42","s_43","s_44","s_45","s_46","s_47"],
-	["Foxtrot",	6,	"s_48","s_49","s_50","s_51","s_52","s_53","s_54","s_55","s_56"]
+	//groupName - sw - (ch block) - units in the group -- Channel block is optional and can be omitted
+	["HQ",		8,	1,	"PLTCOMMAND",	"s_25","s_26"],
+	["ALPHA",	1,	1,	"ALPHA",		"s_1","s_2","s_3","s_4","s_5","s_6"],
+	["BRAVO", 	2,	1,	"BRAVO",		"s_7","s_8","s_9","s_10","s_11","s_12"],
+	["CHARLIE",	3,	1,	"CHARLIE",		"s_13","s_14","s_15","s_16","s_17","s_18"],
+	["DELTA",	4,	1,	"DELTA",		"s_19","s_20","s_21","s_22","s_23","s_24"]
 ];
 
 /*
@@ -24,7 +23,7 @@ TFD_ORBAT = [
 *
 */
 
-startMission = false;
+startMission = missionNameSpace getVariable ["startMission", false];
 
 /*
 *

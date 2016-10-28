@@ -29,6 +29,7 @@ private _TFD_ORBAT = param [0, [], [[]]];
 		if (_n in _x) then {
 		
 			(group _p) setGroupIdGlobal [(_x select 0)];
+			[_p,(_x select 3)] call BIS_fnc_setUnitInsignia;
 		};
 
 	} forEach _TFD_ORBAT;

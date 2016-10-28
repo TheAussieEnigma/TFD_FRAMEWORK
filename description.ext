@@ -27,6 +27,7 @@ enableDebugConsole = 1;
 
 respawn = 3;
 respawndelay = 999999999;
+respawnOnStart = 0; //Dont respawn the player but run the respawn script
 
 // User Functions
 class CfgFunctions
@@ -37,6 +38,9 @@ class CfgFunctions
 // Admin Panel Defines
 #include "adminpanelmk2\dialogs.hpp"
 
+//Unit Insignia
+#include "media\patches\unitInsignia.hpp"
+
 // Headless client setting - please do not adjust this.
 class Params
 {
@@ -45,6 +49,13 @@ class Params
 		title = "Headless Client";
 		values[]= {0,1};
 		texts[] = {"OFF","ON"};
+		default = 0;
+	};
+	class RunDiagnostics
+	{
+		title = "Server Diagnostics Interval";
+		values[] = {0,10,60,120};
+		texts[] = {"OFF", "10sec - High Precision", "60sec - Nominal Precision", "120sec - Low Precision"};
 		default = 0;
 	};
 };
