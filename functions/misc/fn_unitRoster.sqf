@@ -43,23 +43,23 @@ reverse _ar;
 
 _g = format[ "%1" , groupID group _x ];
 _n = name _x;
-_r =  roleDescription player;
+_r =  roleDescription _x;
 
-if (player diarySubjectExists _g) then {
-
-		player createDiaryRecord [ "roster" ,
-			[ _g ,
-					format["%1: <marker name=''>%2</marker><br/>", _n , _r ] 
-			]];
-			
-		} else {
+	if (player diarySubjectExists _g) then {
 		
-		player createDiarySubject [ "roster" , _g ];
-		
-		player createDiaryRecord [ "roster" ,
-			[ _g ,
-					format["%1: <marker name=''>%2</marker><br/>", _n , _r ] 
-			]];
+			player createDiaryRecord [ "roster" ,
+				[ _g ,
+						format["%1: <marker name=''>%2</marker><br/>", _n , _r ] 
+				]];
+				
+			} else {
 			
-		};
+			player createDiarySubject [ "roster" , _g ];
+			
+			player createDiaryRecord [ "roster" ,
+				[ _g ,
+						format["%1: <marker name=''>%2</marker><br/>", _n , _r ] 
+				]];
+				
+			};
 } forEach _ar;
