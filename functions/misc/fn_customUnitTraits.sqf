@@ -5,8 +5,8 @@
  * Changes the characteristics of the units
  *
  * Arguments:
- * 0: Visibility Factor		<NUMBER> ( How easy it is for the AI to notice players )
- * 1: Audible Factor		<NUMBER> ( How easy it is for AI to hear players )
+ * 0: Visibility Factor		<FLOAT> ( How easy it is for the AI to notice players. 0 = No Visibility , 1 = full visiblity )
+ * 1: Audible Factor		<FLOAT> ( How easy it is for AI to hear players. 0 = No Audibility , 1 = full Audibility )
  *
  * Return Value:
  * Nil
@@ -21,7 +21,7 @@ waitUntil {!isNull player && player == player};
 _vis	= param [ 0, 1.00,	[123] ];
 _audio	= param [ 1, 1.00,	[123] ];
 
-player setUnitTrait [ "camouflageCoef" ,	_vis	];
-player setUnitTrait [ "audibleCoef" ,		_audio	];
+player setUnitTrait ["camouflageCoef" , _vis];
+player setUnitTrait ["audibleCoef" , _audio];
 
-true;
+true

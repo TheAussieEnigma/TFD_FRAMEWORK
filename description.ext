@@ -38,10 +38,10 @@ class CfgFunctions
 // Admin Panel Defines
 #include "adminpanelmk2\dialogs.hpp"
 
-//Unit Insignia
+// Unit Insignia
 #include "media\patches\unitInsignia.hpp"
 
-// Headless client setting - please do not adjust this.
+// TODO move to its own header file
 class Params
 {
 	class HeadlessClient
@@ -57,5 +57,21 @@ class Params
 		values[] = {0,10,60,120};
 		texts[] = {"OFF", "10sec - High Precision", "60sec - Nominal Precision", "120sec - Low Precision"};
 		default = 0;
+	};
+	class BriefingPhase
+	{
+		title = "Does the mission have a briefing phase?";
+		values[] = {0,1};
+		texts[] = {"No (Hotdrop)", "Yes (Normal)"};
+		default = 1;
+	};
+	class Daytime
+	{
+		title = "Time";
+		texts[] = {"Morning","Day","Evening","Night"};
+		values[] = {6,12,18,0};
+		default = 12;
+		function = "BIS_fnc_paramDaytime"; 
+		isGlobal = 1;
 	};
 };

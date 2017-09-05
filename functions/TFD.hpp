@@ -3,23 +3,23 @@ class TFD
 	class missionResource
 	{
 		file = "functions\misc";
-		class assignGroup {};
+		
 		class dynamicMarkers {};
 		class automaticMarkers {};
-		class planePos {};
-		class setTFAR {};
-		class setRadio {};
-		class unitRoster {};
 		class weaponLights {};
 		class weaponSafety {};
 		class customUnitTraits {};
-		class handleVelocity {};
-		class simpleFarpInit {};
-		class missionStartDialog {};
-		class objectMapper {};
-		class deployVehicle {};
 	};
 
+	class Init
+	{
+		file = "functions\init";
+		class assignGroup {};
+		class setTFAR {};
+		class setRadio {};
+		class unitRoster {};
+		class missionStartDialog {};
+	}
 	class IED 
 	{
 		file = "functions\IED";

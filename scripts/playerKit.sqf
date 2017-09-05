@@ -1,14 +1,15 @@
 _type = typeOf player;
 
-// Clothing Selection
-	_uniform = "U_O_T_Soldier_F";
+// Clothing & Bag Selection
+	_uniform = ["U_O_T_Soldier_F"] call BIS_fnc_selectRandom;
 	
-	_headgear = "H_HelmetSpecO_ghex_F";
+	_headgear = ["H_HelmetSpecO_ghex_F"] call BIS_fnc_selectRandom;
 	
-	_vest = "V_Chestrig_khk";
+	_vest = ["V_Chestrig_khk"] call BIS_fnc_selectRandom;
 	
-	_bagS = [ "B_ViperHarness_khk_F" , "B_ViperLightHarness_khk_F" ] call BIS_fnc_selectRandom;
-	_bagL = [ "B_ViperHarness_khk_F" , "B_ViperLightHarness_khk_F" ] call BIS_fnc_selectRandom;
+	_bagS = ["B_ViperHarness_khk_F" , "B_ViperLightHarness_khk_F" ] call BIS_fnc_selectRandom;
+	_bagL = ["B_ViperHarness_khk_F" , "B_ViperLightHarness_khk_F" ] call BIS_fnc_selectRandom;
+	
 	_LRRadio = "tf_bussole";
 
 // Weapons
