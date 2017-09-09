@@ -2,10 +2,20 @@ waitUntil {[] call TFAR_fnc_haveSWRadio};
 sleep 1;
 _ORBAT = _this select 0;
 
+//Return the player that is in the topmost slot as the mission commander
 _missionCommander = [] call {
-	for "_i" from 1 to 80 do {
-		if !(isNil format ["s_%1",_i]) exitWith (compile format ["s_%1",_i]);
+	_commander = objnull;
+	_check = true;
+	_itr = 1;
+	while {_check} do {
+		if !(isNil (format ["s_%1",_itr])) then {
+		_commander = [] call compile format ["missionNamespace getVariable 's_%1'",_itr];
+		_check = false;
+		} else { 
+			_itr = _itr + 1; //If no player found on this iteration increment iterator for next loop
+		};
 	};
+	_commander
 };
 
 systemChat name _missionCommander;

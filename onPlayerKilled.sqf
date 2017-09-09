@@ -7,4 +7,4 @@ params = 	the player,
 			enable free camera, 
 			enable 3PP camera
 */
-["Initialize", [player,[],true,false,true]] call BIS_fnc_EGSpectator;
+["Initialize", [player,[],true,true,true]] call BIS_fnc_EGSpectator;
