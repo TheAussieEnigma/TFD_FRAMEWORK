@@ -21,15 +21,20 @@ player addEventHandler ["GetInMan", {
 		(_this select 2) setVariable [_setString, tf_freq_west_lr, true];
 	} forEach ["driver","commander","gunner"]; 
 }];
-if (BodyBagRespawn call BIS_fnc_getParamValue == 1) then{
-	_loadout = getUnitLoadout player
+// if you intend to use this you need an object which is called MedTentBase at base 
+if (BodyBagRespawn call BIS_fnc_getParamValue == 1) && !(isNull MedTentBase) then{
+	_loadout = getUnitLoadout player;
+	_delay = 3 // seconds
 	["ace_placedInBodyBag", {
     params ["_unit", "_BodyBag"];
     if (_unit != player) exitWith {};
-	[{[_this select 0,_this select 1] call CBA_fnc_getDistance < 10;},{(_this select 3) setPlayerRespawnTime 1;}, [_BodyBag,MedTentBase,player]] call CBA_fnc_waitUntilAndExecute;
+	[{_this call CBA_fnc_getDistance < 10;} //condition
+	,{player setPlayerRespawnTime 1;  //statement / code
+	//waits _delay seconds then set loadout to same as Mission start
 	[{
        player setUnitLoadout _loadout;
-    }, [], 3] call CBA_fnc_waitAndExecute;
+    }, [], _delay] call CBA_fnc_waitAndExecute;
+	}, [_BodyBag,MedTentBase]] call CBA_fnc_waitUntilAndExecute;
 	}] call CBA_fnc_addEventHandler;
 };
 
