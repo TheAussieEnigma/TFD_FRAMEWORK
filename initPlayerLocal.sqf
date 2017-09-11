@@ -22,7 +22,7 @@ player addEventHandler ["GetInMan", {
 	} forEach ["driver","commander","gunner"]; 
 }];
 if (BodyBagRespawn call BIS_fnc_getParamValue == 1) then{
-	_loadout = getUnitLoadout player
+	_loadout = getUnitLoadout player;
 	["ace_placedInBodyBag", {
     params ["_unit", "_BodyBag"];
     if (_unit != player) exitWith {};
