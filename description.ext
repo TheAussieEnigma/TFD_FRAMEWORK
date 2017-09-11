@@ -74,4 +74,12 @@ class Params
 		function = "BIS_fnc_paramDaytime"; 
 		isGlobal = 1;
 	};
+	class BodyBagRespawn
+	{
+		title = "Do Players Whos Body Bags are brought back to base Respawn?";
+		values[] = {0,1};
+		texts[] = {"No", "Yes"};
+		default = 0;
+	};
+	
 };
