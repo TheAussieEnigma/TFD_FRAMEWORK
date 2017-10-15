@@ -21,7 +21,6 @@ player addEventHandler ["GetInMan", {
 		(_this select 2) setVariable [_setString, tf_freq_west_lr, true];
 	} forEach ["driver","commander","gunner"]; 
 }];
-<<<<<<< HEAD
 // if you intend to use this you need an object which is called MedTentBase at base 
 if (BodyBagRespawn call BIS_fnc_getParamValue == 1) && !(isNull MedTentBase) then{
 	_loadout = getUnitLoadout player;
