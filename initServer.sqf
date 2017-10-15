@@ -15,22 +15,26 @@ _nul = [] spawn {
 	tf_same_lr_frequencies_for_side = true;
 	publicVariable "tf_same_lr_frequencies_for_side";
 
-	//Set LR frequencies
-	_settingsLRwest = false call TFAR_fnc_generateLRSettings;                           
-	_settingsLRwest set [2, ["50","51","52","53","54","55","56","57","58"]]; 
-	tf_freq_west_lr = _settingsLRwest; 
+	//Set LR frequencies                        
+	tf_freq_west_lr set [2, ["50","51","52","53","54","55","56","57","58"]]; 
 	publicVariable "tf_freq_west_lr";
-
-	_settingsLReast = false call TFAR_fnc_generateLRSettings;                           
-	_settingsLReast set [2, ["50","51","52","53","54","55","56","57","58"]]; 
-	tf_freq_east_lr = _settingsLReast; 
+    
+	tf_freq_east_lr set [2, ["50","51","52","53","54","55","56","57","58"]]; 
 	publicVariable "tf_freq_east_lr";
 
-	_settingsLRguer = false call TFAR_fnc_generateLRSettings;                           
-	_settingsLRguer set [2, ["50","51","52","53","54","55","56","57","58"]]; 
-	tf_freq_guer_lr = _settingsLRguer; 
+	tf_freq_guer_lr set [2, ["50","51","52","53","54","55","56","57","58"]]; 
 	publicVariable "tf_freq_guer_lr";
+	
+	TFD_CHANNEL_BLOCKS = [
+		[], //Leave this blank so people dont have to worry about zero point indexing when organising the orbat
+		["311","312","313","314","315","316","317","318"],
+		["321","322","323","324","325","326","327","328"],
+		["331","332","333","334","335","336","337","338"],
+		["341","342","343","344","345","346","347","348"]
+	];
 };
+GroupLeaderAlternateChannel = false;
+publicVariable "GroupLeaderAlternateChannel";
 
 _diagnostics = ("RunDiagnostics" call BIS_fnc_getParamValue);
 if ( _diagnostics > 0) then {
