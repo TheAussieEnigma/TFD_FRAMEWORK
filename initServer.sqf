@@ -14,15 +14,20 @@ nul = execVM "adminpanelmk2\fn_adminPanelInit.sqf";
 _nul = [] spawn {
 	tf_same_lr_frequencies_for_side = true;
 	publicVariable "tf_same_lr_frequencies_for_side";
-
-	//Set LR frequencies                        
-	tf_freq_west_lr set [2, ["50","51","52","53","54","55","56","57","58"]]; 
+	//Set LR frequencies 
+	_settingsLRwest = false call TFAR_fnc_generateLRSettings;                           
+	_settingsLRwest set [2, ["50","51","52","53","54","55","56","57","58"]]; 
+	tf_freq_west_lr = _settingsLRwest; 
 	publicVariable "tf_freq_west_lr";
-    
-	tf_freq_east_lr set [2, ["50","51","52","53","54","55","56","57","58"]]; 
+
+	_settingsLReast = false call TFAR_fnc_generateLRSettings;                           
+	_settingsLReast set [2, ["50","51","52","53","54","55","56","57","58"]]; 
+	tf_freq_east_lr = _settingsLReast; 
 	publicVariable "tf_freq_east_lr";
 
-	tf_freq_guer_lr set [2, ["50","51","52","53","54","55","56","57","58"]]; 
+	_settingsLRguer = false call TFAR_fnc_generateLRSettings;                           
+	_settingsLRguer set [2, ["50","51","52","53","54","55","56","57","58"]]; 
+	tf_freq_guer_lr = _settingsLRguer; 
 	publicVariable "tf_freq_guer_lr";
 	
 	TFD_CHANNEL_BLOCKS = [
@@ -32,6 +37,7 @@ _nul = [] spawn {
 		["331","332","333","334","335","336","337","338"],
 		["341","342","343","344","345","346","347","348"]
 	];
+	publicVariable "TFD_CHANNEL_BLOCKS";
 };
 GroupLeaderAlternateChannel = false;
 publicVariable "GroupLeaderAlternateChannel";

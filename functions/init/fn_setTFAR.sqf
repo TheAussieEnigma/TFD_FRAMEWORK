@@ -2,13 +2,12 @@ _ORBAT = _this select 0;
 
 //Setup channel blocks - the below configuration could easily support up to 200+ players in 8 man squads. look in initServer.sqf for freqs
 
-_settingsSW = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
-_settingsLR = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getSwSettings;
-_settingsLR set [2, ["50","51","52","53","54","55","56","57","58"]];
+_settingsSW = false call TFAR_fnc_generateSwSettings;
+_settingsLR = tf_freq_west_lr;
 //Assign Correct SW Channel block to variable - you will need to specify which channel block they are in by entering it in as a number after the channel number but before the unit names in TFD_ORBAT. i.e. ["Alpha", 1, 1, "s_1"]. the value must correspond to the array index in TFD_CHANNEL_BLOCK above.
 {
 	if ((str player) in _x && typeName (_x select 2) == "SCALAR") exitWith {
-		_settingsSW set [2, _TFD_CHANNEL_BLOCKS select (_x select 2)];
+		_settingsSW set [2, TFD_CHANNEL_BLOCKS select (_x select 2)];
 		CurrentRadioBlock = (_x select 2);
 	};
 	CurrentRadioBlock = -1; //disables ace interaction menu radio block switching
@@ -39,7 +38,6 @@ if (call TFAR_fnc_haveLRRadio) then {
 if (CurrentRadioBlock == -1) exitwith {};
 _Action = ["Radio","Radio","",{a=a+1;},{true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _Action] call ace_interact_menu_fnc_addActionToObject;
-
 count_b = (count TFD_CHANNEL_BLOCKS) - 1;
 _conditionUp = {
    !(CurrentRadioBlock >= count_b);
